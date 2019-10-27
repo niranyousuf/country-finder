@@ -1,22 +1,262 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+    font-family: 'Nunito', sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a,
+a:hover {
+    color: #00b8e6;
+    text-decoration: none;
 }
 
-.App-link {
-  color: #09d3ac;
+h2 > a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+h2 > a:hover {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+h4 {
+    margin-bottom: 10px;
+}
+
+.info__list {
+    list-style: none;
+    text-align: left;
+}
+
+img {
+    widows: 100%;
+}
+
+.container {
+    margin: 0 10%;
+}
+
+nav.navbar {
+    background: #333333;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.country__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.country > h4 {
+    font-size: 22px;
+    border-bottom: 1px dotted #e3e3e3;
+    padding: 15px;
+    margin: 0;
+}
+
+.country > img {
+    max-height: 130px;
+    height: auto;
+    width: 100%;
+    border: 1px solid #f1f1f1;
+}
+
+.country {
+    border: 1px solid #cccccc;
+    padding: 0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.country__info {
+    border: 1px solid #f1f1f1;
+    padding: 20px;
+    border-radius: 3px;
+}
+
+.info__list > li {
+    border-top: 1px dotted #e3e3e3;
+    padding: 10px 15px;
+}
+
+.navbar .logo {
+    display: inline-block;
+}
+
+ul.menu {
+    float: right;
+}
+
+.menu > li {
+    display: inline-block;
+}
+
+.menu > li > a {
+    color: #fff;
+    display: block;
+    padding: 5px 10px;
+}
+
+.search__form {
+    display: block;
+}
+
+input[type="submit"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 38px;
+    padding: 5px 30px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 0 3px 3px 0;
+    border: 1px solid #333;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    display: block;
+    width: 100%;
+    height: 38px;
+    padding: 5px 15px;
+    border-radius: 3px;
+    border: 1px solid #dadada;
+    box-sizing: border-box;
+}
+
+.search__form > .form {
+    display: block;
+    width: 50%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.country__details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.country__details {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.country__details > img {
+    width: 100%;
+    border: 1px solid #f1f1f1;
+}
+
+.country__info > h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.infos > h4 {
+    text-transform: capitalize;
+    font-size: 24px;
+    border-bottom: 1px solid #333;
+}
+
+.infos > p {
+    margin-bottom: 8px;
+    text-align: right;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 8px;
+}
+
+.infos > p > strong {
+    font-weight: bold;
+    font-size: 18px;
+    float: left;
+}
+
+.infos > p > sup {
+    font-size: 9px;
+}
+
+.alert-danger {
+    border: 1px solid #ff5200;
+    padding: 10px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    background: #ff2f001a;
+    width: 50%;
+}
+
+.region__list > h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.region__list > h2 > em {
+    text-transform: capitalize;
+    color: #482525;
+    font-size: 32px;
+}
+
+.region__list > .regions {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 15px;
+    margin-bottom: 15px;
+}
+
+.region__list > .regions > input[type="submit"] {
+    position: inherit;
+    border-radius: 3px;
+    border: 1px solid #333;
+}
+
+.bg-block {
+    display: block;
+    background: #333;
+    color: #fff;
+    padding: 5px;
+    padding-left: 15px;
+    margin-top: 15px;
+}
+
+.footer {
+    background: #333;
+    margin-top: 30px;
+    padding: 20px 10%;
+    color: #fff;
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .country__list {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 15px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .country__list {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 15px;
+    }
+
+    .country__details {
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 15px;
+    }
+
+    .search__form > .form {
+        width: 100%;
+    }
 }
