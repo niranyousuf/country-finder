@@ -23,7 +23,7 @@ const CountryState = (props) => {
     // Show all country
     const showAllCountries = async () => {
         setLoading();
-        const res = await axios.get(`https://restcountries.eu/rest/v2/all`);
+        const res = await axios.get(`https://restcountries.com/v2/all`);
         dispatch({
             type: SHOW_ALL_COUNTRIES,
             payload: res.data
@@ -33,7 +33,7 @@ const CountryState = (props) => {
     // Search country
     const searchCountry = async (text) => {
         setLoading();
-        const res = await axios.get(`https://restcountries.eu/rest/v2/name/${text}`);
+        const res = await axios.get(`https://restcountries.com/v2/name/${text}`);
         dispatch({
             type: SEARCH_COUNTRY,
             payload: res.data
@@ -42,7 +42,7 @@ const CountryState = (props) => {
     // Region
     const findRegion = async (region) => {
         setLoading();
-        const res = await axios.get(`https://restcountries.eu/rest/v2/region/${region}`);
+        const res = await axios.get(`https://restcountries.com/v2/region/${region}`);
         dispatch({
             type: FIND_REGION,
             payload: res.data
@@ -55,7 +55,7 @@ const CountryState = (props) => {
     // Country Details
     const countryDetails = async (name) => {
         setLoading();
-        const res = await axios.get(`https://restcountries.eu/rest/v2/name/${name}`);
+        const res = await axios.get(`https://restcountries.com/v2/name/${name}`);
         dispatch({
             type: COUNTRY_DETAILS,
             payload: res.data[0]
