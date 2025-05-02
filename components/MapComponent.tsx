@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet'
+import { GeoJsonObject } from 'geojson'
 import 'leaflet/dist/leaflet.css'
 
 interface MapComponentProps {
@@ -10,16 +11,30 @@ interface MapComponentProps {
   zoom: number
 }
 
+interface GeoJSONFeature {
+  type: string
+  properties: {
+    ISO_A3: string
+    [key: string]: unknown
+  }
+  geometry: unknown
+}
+
+interface GeoJSONData extends GeoJsonObject {
+  type: 'FeatureCollection'
+  features: GeoJSONFeature[]
+}
+
 export default function MapComponent({ center, countryCode, zoom }: MapComponentProps) {
-  const [geoData, setGeoData] = useState<any>(null)
+  const [geoData, setGeoData] = useState<GeoJSONData | null>(null)
 
   useEffect(() => {
     const fetchGeoData = async () => {
       try {
         const response = await fetch(`https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson`)
-        const data = await response.json()
+        const data: GeoJSONData = await response.json()
         const countryFeature = data.features.find(
-          (feature: any) => feature.properties.ISO_A3 === countryCode
+          (feature: GeoJSONFeature) => feature.properties.ISO_A3 === countryCode
         )
         setGeoData(countryFeature ? { type: 'FeatureCollection', features: [countryFeature] } : null)
       } catch (error) {
