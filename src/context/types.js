@@ -1,7 +1,0 @@
-export const SEARCH_COUNTRY = 'SEARCH_COUNTRY';
-export const SHOW_ALL_COUNTRIES = 'SHOW_ALL_COUNTRIES';
-export const COUNTRY_DETAILS = 'COUNTRY_DETAILS';
-export const SET_LOADING = 'SET_LOADING';
-export const SET_ALERT = 'SET_ALERT';
-export const REMOVE_ALERT = 'REMOVE_ALERT';
-export const FIND_REGION = 'FIND_REGION';
