@@ -1,4 +1,3 @@
-import { Metadata } from 'next'
 import CountryList from '@/components/CountryList'
 
 type Props = {
