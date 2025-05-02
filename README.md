@@ -41,9 +41,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 This project utilizes the following APIs:
 
-- **API Name**: Brief description of what the API does.
-  - [API Documentation](https://link-to-api-docs.com)
-  - [API Terms of Use](https://link-to-api-terms.com)
+- **REST Countries API**: Provides detailed information about countries, including names, flags, population, and more.
+  - [API Documentation](https://restcountries.com/)
+  - [API Terms of Use](https://restcountries.com/#terms)
 
 Please ensure you comply with the terms and conditions of the APIs used in this project.
 
