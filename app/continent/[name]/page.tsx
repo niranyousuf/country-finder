@@ -1,12 +1,14 @@
+import { Metadata } from 'next'
 import CountryList from '@/components/CountryList'
 
-interface PageProps {
+type Props = {
   params: {
     name: string
   }
+  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-export default function ContinentPage({ params }: PageProps) {
+export default async function ContinentPage({ params }: Props) {
   const continentName = params.name;
   const formattedName = continentName.charAt(0).toUpperCase() + continentName.slice(1);
 
