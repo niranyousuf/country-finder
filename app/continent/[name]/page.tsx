@@ -1,6 +1,12 @@
 import CountryList from '@/components/CountryList'
 
-export default async function ContinentPage({ params }: { params: { name: string } }) {
+interface PageProps {
+  params: {
+    name: string
+  }
+}
+
+export default function ContinentPage({ params }: PageProps) {
   const continentName = params.name;
   const formattedName = continentName.charAt(0).toUpperCase() + continentName.slice(1);
 
