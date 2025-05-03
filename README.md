@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-### You can see a live demo in [Country Finder](https://country-finder-by-niranyousuf.netlify.app/)
+### You can see a live demo in [Country Finder](https://country-finder-xi.vercel.app/)
 
 ## Getting Started
 
