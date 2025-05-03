@@ -9,7 +9,7 @@ type Props = {
 type PageProps = {
   params: { [key: string]: string }
 }
-export default function ContinentPage({ params }: Props) {
+export default function ContinentPage({ params }: PageProps) {
   const continentName = params.name;
   const formattedName = params.name.charAt(0).toUpperCase() + params.name.slice(1);
 
