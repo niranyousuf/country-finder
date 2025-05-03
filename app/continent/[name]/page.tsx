@@ -1,13 +1,14 @@
 import CountryList from '@/components/CountryList'
 
 type Props = {
-  params: Promise<{ name: string }>
+  params: {
+    name: string
+  }
   searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-export default async function ContinentPage({ params }: Props) {
-  const resolvedParams = await params;
-  const continentName = resolvedParams.name;
+export default function ContinentPage({ params }: Props) {
+  const continentName = params.name;
   const formattedName = continentName.charAt(0).toUpperCase() + continentName.slice(1);
 
   return (
