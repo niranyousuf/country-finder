@@ -15,6 +15,7 @@ interface Country {
   capital: string[]
   population: number
   region: string
+  subregion?: string
 }
 
 interface CountryListProps {
@@ -29,19 +30,67 @@ export default function CountryList({ searchTerm, continent }: CountryListProps)
 
   const fetchCountries = useCallback(async () => {
     try {
-      // Use continent-specific endpoint if continent is provided
-      const url = continent
-        ? `https://restcountries.com/v3.1/region/${continent}`
-        : 'https://restcountries.com/v3.1/all'
+      let url: string
+      
+      if (continent) {
+        // Map URL continent names to API region names
+        const regionMap: { [key: string]: string } = {
+          'africa': 'Africa',
+          'asia': 'Asia', 
+          'europe': 'Europe',
+          'north-america': 'Americas',
+          'south-america': 'Americas',
+          'oceania': 'Oceania'
+        }
+        
+        const apiRegion = regionMap[continent.toLowerCase()]
+        
+        if (!apiRegion) {
+          console.error(`Unknown continent: ${continent}`)
+          setCountries([])
+          setLoading(false)
+          return
+        }
+        
+        url = `https://restcountries.com/v3.1/region/${apiRegion}?fields=name,flags,capital,population,region,subregion,area,latlng,cca3`
+      } else {
+        url = 'https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion,area,latlng,cca3'
+      }
       
       const res = await fetch(url)
+      
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status} for URL: ${url}`)
+      }
+      
       const data = await res.json()
-      const sortedData = data.sort((a: Country, b: Country) => 
-        a.name.common.localeCompare(b.name.common)
-      )
-      setCountries(sortedData)
+      
+      // Check if data is an array before sorting
+      if (Array.isArray(data)) {
+        let filteredData = data
+        
+        // For Americas region, filter by subregion if needed
+        if (continent && continent.toLowerCase() === 'north-america') {
+          filteredData = data.filter((country: Country) => 
+            country.subregion === 'North America'
+          )
+        } else if (continent && continent.toLowerCase() === 'south-america') {
+          filteredData = data.filter((country: Country) => 
+            country.subregion === 'South America'
+          )
+        }
+        
+        const sortedData = filteredData.sort((a: Country, b: Country) => 
+          a.name.common.localeCompare(b.name.common)
+        )
+        setCountries(sortedData)
+      } else {
+        console.error('API response is not an array:', data)
+        setCountries([])
+      }
     } catch (error) {
       console.error('Error fetching countries:', error)
+      setCountries([])
     } finally {
       setLoading(false)
     }

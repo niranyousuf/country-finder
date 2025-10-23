@@ -17,7 +17,7 @@ export default function ContinentCard({ continent }: ContinentCardProps) {
   return (
     <div 
       className="bg-black rounded-sm overflow-hidden cursor-pointer hover:shadow-xl"
-      onClick={() => router.push(`/continent/${continent.name.toLowerCase()}`)}
+      onClick={() => router.push(`/continent/${continent.slug}`)}
     >
       <div className="relative w-full h-100 flex items-center justify-center">
         <Image

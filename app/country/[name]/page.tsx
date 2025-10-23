@@ -80,7 +80,7 @@ export default function CountryDetailPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className='space-y-3'>
               <p><span className="font-bold">Official Name:</span> {country.name.official}</p>
-              <p><span className="font-bold">Population:</span> {country.population.toLocaleString()}</p>
+              <p><span className="font-bold">Population:</span> {country.population.toLocaleString('en-US')}</p>
               <p><span className="font-bold">Region:</span> {country.region}</p>
               <p><span className="font-bold">Sub Region:</span> {country.subregion}</p>
               <p><span className="font-bold">Capital:</span> {country.capital?.join(', ')}</p>
@@ -91,7 +91,7 @@ export default function CountryDetailPage() {
                   .map(curr => `${curr.name} (${curr.symbol})`)
                   .join(', ')
               }</p>
-              <p><span className="font-bold">Area:</span> {country.area.toLocaleString()} km²</p>
+              <p><span className="font-bold">Area:</span> {country.area.toLocaleString('en-US')} km²</p>
             </div>
           </div>
         </div>

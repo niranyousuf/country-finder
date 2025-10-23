@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 interface CountryCardProps {
   country: {
@@ -21,6 +22,16 @@ interface CountryCardProps {
 
 export default function CountryCard({ country }: CountryCardProps) {
   const router = useRouter()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const formatPopulation = (population: number) => {
+    if (!mounted) return population.toString()
+    return population.toLocaleString()
+  }
 
   return (
     <div 
@@ -38,7 +49,7 @@ export default function CountryCard({ country }: CountryCardProps) {
       <div className="pl-4 flex-1 flex flex-col justify-center">
         <h2 className="text-xl font-bold mb-2">{country.name.common}</h2>
         <p><span className="font-semibold">Capital:</span> {country.capital?.[0] || 'N/A'}</p>
-        <p><span className="font-semibold">Population:</span> {country.population.toLocaleString()}</p>
+        <p><span className="font-semibold">Population:</span> {formatPopulation(country.population)}</p>
         <p><span className="font-semibold">Region:</span> {country.region}</p>
       </div>
     </div>
