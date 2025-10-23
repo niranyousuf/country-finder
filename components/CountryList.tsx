@@ -25,7 +25,7 @@ interface CountryListProps {
 export default function CountryList({ searchTerm, continent }: CountryListProps) {
   const [countries, setCountries] = useState<Country[]>([])
   const [loading, setLoading] = useState(true)
-  const [visibleCount, setVisibleCount] = useState(15)
+  const [visibleCount, setVisibleCount] = useState(9)
 
   const fetchCountries = useCallback(async () => {
     try {
@@ -83,7 +83,7 @@ export default function CountryList({ searchTerm, continent }: CountryListProps)
       {hasMore && (
         <div className="text-center mt-8">
           <button
-            onClick={() => setVisibleCount(prev => prev + 15)}
+            onClick={() => setVisibleCount(prev => prev + 9)}
             className="px-6 py-2 rounded-b-xs border border-smoke bg-smoke text-black cursor-pointer transition-all hover:bg-deepBlue hover:text-smoke duration-300"
           >
             Load More
